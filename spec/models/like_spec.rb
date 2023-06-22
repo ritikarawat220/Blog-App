@@ -11,7 +11,7 @@ RSpec.describe Like, type: :model do
     end
 
     subject(:like) do
-      described_class.new(author: user, post: post)
+      described_class.new(author: user, post:)
     end
 
     it 'requires a user id' do

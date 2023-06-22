@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
       expect(user.recent_posts.length).to eq(3)
     end
 
-    it 'should return most recent one as first item' do
+    it 'should return the most recent one as the first item' do
       expect(user.recent_posts.first.title).to eq('Post 4')
     end
   end

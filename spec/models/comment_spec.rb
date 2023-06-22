@@ -11,7 +11,7 @@ RSpec.describe Comment, type: :model do
     end
 
     subject(:comment) do
-      described_class.create(text: 'This is my first comment', post: post, author: user)
+      described_class.create(text: 'This is my first comment', post:, author: user)
     end
 
     it 'is valid without text' do
