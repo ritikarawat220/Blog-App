@@ -1,0 +1,41 @@
+<h1>Here is a list of posts for a given user</h1>
+
+<div class="wrapper">
+<p>	    <div class="userNameWrapper">
+    Name: <%= @user.name %>	        <div><img alt="Profile P."/></div>
+    <h6>Number of posts: <%= @user.posts.count%></h6>	        <div class="userName">
+</p>	            <h2> 
+<p>Bio: <%= @user.bio %></p>	                Name: <%= @user.name %>
+<ul>	            </h2>
+    <% @user.posts.first(3).each_with_index do |post, index| %>	            <h6>Number of posts: <%= @user.posts.count%></h6>
+        <li>	        </div>
+            <h3>Post #<%= index + 1%></h3>	    </div>
+            <p><%= post.text%></p>	
+        </li>	    <div class="bio">
+    <% end %>	        <h3>Bio:</h3>
+</ul>	        <p><%= @user.bio %></p>
+<button>See all posts</button>	    </div>
+    <ul>
+        <% @user.posts.first(3).each_with_index do |post, index| %>
+
+          <ul class="post">
+            <%= link_to user_posts_path(@user), class: 'user-link' do %>
+                <h3>Post #<%= index + 1 %></h3>
+                <% words = post.text.split %>
+                <% if words.length <= 18 %>
+                <p><%= post.text %></p>
+                <% else %>
+                <p><%= words.take(18).join(' ') %>...</p>
+                <% end %>
+                <div class="count">
+                    Comments: <%= post.comments.count %> &nbsp;&nbsp;
+                    Likes: <%= post.likes.count %>
+                </div>
+            <% end %>
+          </ul>
+        <% end %>
+    </ul>
+    <div class="button">
+        <button>See all posts</button>
+    </div>
+</div>

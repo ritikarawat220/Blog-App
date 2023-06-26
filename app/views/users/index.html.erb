@@ -1,0 +1,18 @@
+<h1>Here is a list of users</h1>
+
+<div class="wrapper">
+  <ul>
+    <% @users.each do |user| %>
+      <li class="userNameWrapper">
+          <div><img alt="Profile P."/></div>
+
+            <div class="userName">
+          <%= link_to user_path(user), class: 'userName' do %>
+            <h2><%= user.name %></h2>
+            <h6>Number of posts: <%= user.posts.count %></h6>
+          <% end %>
+            </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

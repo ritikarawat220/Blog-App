@@ -1,0 +1,42 @@
+<h1>Here is a list of posts and comments for a given user</h1>
+<div class="wrapper">
+  <div class="userNameWrapper">
+          <div><img alt="Profile P."/></div>
+          <div class="userName">
+              <h2> 
+                  Name: <%= @user.name %>
+              </h2>
+              <h6>Number of posts: <%= @user.posts.count%></h6>
+          </div>
+      </div>
+
+  <% @posts.each_with_index do |post, index| %>
+    <div class="post">
+      <%= link_to user_post_path(@user, post), class: 'post-link' do %>
+
+        <h2>Post #<%= index+1 %></h2>
+        <h3><%= post.title %></h3>
+        <p>
+        <%= post.text %>
+        <br/>
+        <div class="count">
+          Comments: <%= post.comments.count%>&nbsp;&nbsp;
+          likes: <%= post.likes.count%>
+        </div>
+        </p>
+      <% end %>
+    </div>
+    <% if post.comments.count > 0 %>
+      <div class="comments">
+        <ul>
+            <% post.comments.order(created_at: :desc).limit(5).each do |comment| %>
+                <li><%= comment.author.name %>: <%= comment.text %></li>
+            <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="button">
+    <button>Pagination</button>
+  </div>
+</div>

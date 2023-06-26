@@ -1,0 +1,21 @@
+<h1>Here is a post and its list of comments</h1>
+<div class="wrapper">
+
+  <div class="post">
+    <h2>Post #<%= @user.posts.index(@post) + 1 %> by <%= @user.name %></h2>
+    <h3><%= @post.title %></h3>
+    <p><%= @post.text %></p>
+
+  </div>
+
+  <% if @comments.count > 0 %>
+    <div class="comments">
+      <ul> 
+        <% @comments.each do |comment|%>
+            <li><%= comment.author.name %>: <%= comment.text %></li>
+        <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+</div>
