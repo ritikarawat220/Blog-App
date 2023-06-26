@@ -1,0 +1,92 @@
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .wrapper {
+    width: 100%;
+    margin: auto;
+    padding-top: 50px;
+  }
+  
+  .userNameWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .userNameWrapper > div {
+    border: 5px solid black;
+    margin: 5px 0;
+  }
+  
+  h6 {
+    font-size: 15px;
+  }
+  
+  .userName > h6 {
+    align-self: flex-end;
+  }
+  
+  .userNameWrapper > div h2,
+  .userNameWrapper > div h6 {
+    margin: 0 10px;
+  }
+  
+  .userNameWrapper .userName {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70px;
+    width: 300px;
+  }
+  
+  .bio,
+  .post {
+    border: 5px solid black;
+    margin: 5px 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bio > *,
+  .post > * {
+    margin: 0 10px;
+    margin-bottom: 15px;
+  }
+  
+  .count {
+    align-self: flex-end;
+  }
+  
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  button {
+    width: 150px;
+    background-color: transparent;
+    cursor: pointer;
+    box-shadow: 5px 5px black;
+    border: 2px solid black;
+    margin: 10px 0;
+    padding: 5px 0;
+  }
+  
+  .button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .comments {
+    border: 5px solid black;
+    margin-bottom: 15px;
+  }
+  
+  .comments ul {
+    margin: 0 10px;
+  }
