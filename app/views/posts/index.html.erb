@@ -1,0 +1,24 @@
+<h1>Posts</h1>
+<p>
+    User: <%= @user.name %>
+    <h6>Number of posts: <%= @user.posts.count%></h6>
+</p>
+
+<% @posts.each_with_index do |post, index| %>
+  <div class="post">
+    <h2>Post #<%= index+1 %></h2>
+    <h3><%= post.title %></h3>
+    <p>
+    <%= post.text %>
+    <br/>
+    Comments: <%= post.comments_counter %>
+    Likes: <%= post.likes_counter %>
+    </p>
+    <ul>
+        <% post.comments.order(created_at: :desc).limit(5).each do |comment| %>
+            <li><%= comment.author.name %>: <%= comment.text %></li>
+        <% end %>
+    </ul>
+  </div>
+<% end %>
+<button>Pagination</button>

@@ -1,3 +1,15 @@
 <h1>User Details</h1>
-<p>Name: <%= @user.name %></p>
+<p>
+    Name: <%= @user.name %>
+    <h6>Number of posts: <%= @user.posts.count%></h6>
+</p>
 <p>Bio: <%= @user.bio %></p>
+<ul>
+    <% @user.posts.first(3).each_with_index do |post, index| %>
+        <li>
+            <h3>Post #<%= index + 1%></h3>
+            <p><%= post.text%></p>
+        </li>
+    <% end %>
+</ul>
+<button>See all posts</button>
