@@ -74,7 +74,7 @@ end
 
 group :development, :test do
   gem 'enum_help'
+  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 5.0.0'
   gem 'shoulda-matchers'
-  gem 'rails-controller-testing'
 end

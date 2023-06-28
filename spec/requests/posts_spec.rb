@@ -10,7 +10,7 @@ RSpec.describe 'Posts', type: :request do
 
     it 'includes correct placeholder text in the response body' do
       get '/users/:user_id/posts'
-      expect(response.body).to match('Here is a list of posts and comments for a given user')
+      expect(response.body).to match('All posts will be displayed')
     end
   end
 
@@ -23,7 +23,7 @@ RSpec.describe 'Posts', type: :request do
 
     it 'includes correct placeholder text in the response body' do
       get '/users/:user_id/posts/:id'
-      expect(response.body).to match('Here is a post and its list of comments')
+      expect(response.body).to match('A single post will be displayed')
     end
   end
 end
