@@ -5,7 +5,7 @@ body {
 }
 
 .wrapper {
-  width: 100%;
+  width: 90%;
   margin: auto;
   padding-top: 50px;
 }
@@ -21,25 +21,16 @@ body {
   margin: 5px 0;
 }
 
-h6 {
-  font-size: 15px;
+.userName {
+  width: 80%;
 }
 
-.userName > h6 {
-  align-self: flex-end;
-}
-
-.userNameWrapper > div h2,
-.userNameWrapper > div h6 {
-  margin: 0 10px;
-}
-
+.userNameAnchor,
 .userNameWrapper .userName {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 70px;
-  width: 300px;
 }
 
 .bio,
@@ -76,10 +67,31 @@ button {
   padding: 5px 0;
 }
 
+h6 {
+  font-size: 15px;
+}
+
 .button {
   display: flex;
   width: 100%;
   justify-content: center;
+}
+
+.button a {
+  padding: 5px 10px;
+  border: 1px solid black;
+  text-decoration: none;
+  color: black;
+  box-shadow: 5px 5px black;
+}
+
+.button a:visited {
+  color: black;
+}
+
+.postHeader {
+  display: flex;
+  justify-content: space-between;
 }
 
 .comments {
@@ -88,5 +100,14 @@ button {
 }
 
 .comments ul {
+  margin: 0 10px;
+}
+
+.userNameAnchor > h6 {
+  align-self: flex-end;
+}
+
+.userNameWrapper > div h2,
+.userNameWrapper > div h6 {
   margin: 0 10px;
 }
