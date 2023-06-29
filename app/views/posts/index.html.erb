@@ -10,6 +10,7 @@
       </div>
 
   <% @posts.each_with_index do |post, index| %>
+
     <div class="post">
       <%= link_to user_post_path(@user, post), class: 'post-link' do %>
       
@@ -18,6 +19,7 @@
         <p>
         <%= post.text %>
         <br/>
+
         <div class="count">
           Comments: <%= post.comments.count%>&nbsp;&nbsp;
           likes: <%= post.likes.count%>
@@ -35,6 +37,7 @@
       </div>
     <% end %>
   <% end %>
+  
   <div class="button">
     <button>Pagination</button>
   </div>

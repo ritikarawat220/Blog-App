@@ -1,4 +1,5 @@
 <div class="wrapper">
+
   <div class="userNameWrapper">
     <div><img alt="Profile P."/></div>
     <div class="userName">
@@ -11,6 +12,7 @@
     <h3>Bio:</h3>
     <p><%= @user.bio %></p>
   </div>
+
   <% @user.recent_posts.each_with_index do |post, index| %>
     <ul class="post" style="<%= index >= 3 ? 'display:none' : '' %>">
       <%= link_to user_post_path(@user, post), class: 'user-link' do %>
@@ -27,6 +29,7 @@
         </div>
       <% end %>
     </ul>
+    
   <% end %>
     <div class="button">
         <%= link_to 'See all posts', user_posts_path(@user), id: 'all-posts-link' %>
