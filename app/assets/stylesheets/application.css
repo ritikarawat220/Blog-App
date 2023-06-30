@@ -4,6 +4,15 @@ body {
   padding: 0;
 }
 
+h1 {
+  font-size: 30px;
+  line-height: 2rem;
+  text-align: center;
+  margin: 30px auto;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
 .wrapper {
   width: 90%;
   margin: auto;
