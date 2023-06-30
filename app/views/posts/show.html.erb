@@ -1,1 +1,21 @@
-<h1>A single post will be displayed</h1>
+<div class="wrapper">
+  <div class="post">
+    <div class="postHeader">
+      <h2>Post #<%= @user.posts.index(@post) + 1 %> by <%= @user.name %></h2>
+      <h6>Comments: <%= @post.comments.count %>,&nbsp;Likes: <%= @post.likes.count %></h6>
+    </div>
+    <h3><%= @post.title %></h3>
+    <p><%= @post.text %></p>
+  </div>
+
+  <% if @comments.count > 0 %>
+    <div class="comments">
+      <ul> 
+        <% @comments.each do |comment|%>
+            <li><%= comment.author.name %>: <%= comment.text %></li>
+        <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+</div>
