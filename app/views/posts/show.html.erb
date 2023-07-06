@@ -4,6 +4,17 @@
       <h2>Post #<%= @user.posts.index(@post) + 1 %> by <%= @user.name %></h2>
       <h6>Comments: <%= @post.comments.count %>,&nbsp;Likes: <%= @post.likes.count %></h6>
     </div>
+    <div class='buttons'>
+        <button class='create-comment-btn'>
+          <%= link_to 'Add New Comment', new_user_post_comment_path(@user, @post)%>
+        </button>
+
+        <div>
+          <%= form_with model: Like, url: user_post_likes_path(@post.author, @post) do |form| %>
+            <%= form.submit 'Like Post', class: 'like-btn' %>
+          <% end %>
+        </div>
+    </div>
     <h3><%= @post.title %></h3>
     <p><%= @post.text %></p>
   </div>
