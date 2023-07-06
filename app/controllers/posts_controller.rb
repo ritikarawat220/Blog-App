@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       redirect_to user_posts_path(current_user)
 
     else
-      flash[:alert] = 'Something went wrong!'
+      flash[:alert] = 'Something went wrong'
       render 'new'
     end
   end
