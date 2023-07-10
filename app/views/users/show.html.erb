@@ -17,11 +17,13 @@
     <ul class="post" style="<%= index >= 3 ? 'display:none' : '' %>">
       <%= link_to user_post_path(@user, post), class: 'user-link' do %>
         <h3>Post #<%= index + 1 %></h3>
-        <% words = post.text.split %>
-        <% if words.length <= 18 %>
-          <p><%= post.text %></p>
-        <% else %>
-          <p><%= words.take(18).join(' ') %>...</p>
+        <% if post.text %>
+          <% words = post.text.split %>
+          <% if words.length <= 18 %>
+            <p><%= post.text %></p>
+          <% else %>
+            <p><%= words.take(18).join(' ') %>...</p>
+          <% end %>
         <% end %>
         <div class="count">
           Comments: <%= post.comments.count %> &nbsp;&nbsp;
