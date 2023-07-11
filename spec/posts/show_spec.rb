@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 RSpec.describe 'Post #Show Page', type: :feature do
   let(:user) do
     User.create(name: 'Lilly', photo: 'https://example.jpg',
