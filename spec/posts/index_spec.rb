@@ -2,7 +2,7 @@ require 'rails_helper'
 RSpec.describe 'Post #Index Page', type: :feature do
   before(:each) do
     @user = User.create(name: 'Lilly', photo: 'https://example.jpg',
-        bio: 'She is a teacher from Mexico', posts_counter: 10)
+                        bio: 'She is a teacher from Mexico', posts_counter: 10)
     @post = Post.create(author: @user, title: 'test post', text: 'This is my first post', likes_counter: 15,
                         comments_counter: 10)
     @comment = Comment.create(post_id: @post.id, user_id: @user.id, text: 'test comment')
