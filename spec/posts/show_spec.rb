@@ -1,4 +1,6 @@
 require 'rails_helper'
+require 'capybara/rspec'
+require 'capybara/rails'
 
 RSpec.describe 'Post #Show Page', type: :feature do
   let(:user) do
