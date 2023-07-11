@@ -28,6 +28,11 @@ RSpec.describe 'User #Show Page', type: :feature do
     expect(page.html).to have_content(@user.posts_counter)
   end
 
+  it 'When I click to see all posts, it redirects me to the user\'s post index page.' do
+    click_link('See all posts')
+    expect(current_path).to eq(user_posts_path(@user))
+  end
+
   it 'I can see the user\'s bio.' do
     expect(page).to have_content(@user.bio)
   end
@@ -39,7 +44,7 @@ RSpec.describe 'User #Show Page', type: :feature do
     end
   end
 
-  it 'When I click to see all posts, it redirects me to the user\'s post index page.' do
+  it 'When I click a user\'s post, it redirects me to that post\'s show page.' do
     click_link('See all posts')
     expect(current_path).to eq(user_posts_path(@user))
   end
