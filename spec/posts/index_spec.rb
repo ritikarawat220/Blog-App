@@ -45,4 +45,8 @@ RSpec.describe 'Post #Index Page', type: :feature do
   it 'I can see a section for pagination if there are more posts than fit on the view.' do
     page.has_content?('Next')
   end
+  
+  it 'When I click on a post, it redirects me to that post\'s show page.' do
+    page.has_content?(@post.title)
+  end
 end

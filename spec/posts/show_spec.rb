@@ -11,8 +11,12 @@ RSpec.describe 'Post #Show Page', type: :feature do
                  body: 'This is the body of the post', likes_counter: 15, comments_counter: 10)
   end
 
-  let(:comment) do
-    Comment.create(post:, author: user, text: 'test comment')
+  let!(:comment1) do
+    Comment.create(post: post, author: user, text: 'test comment 1')
+  end
+  
+  let!(:comment2) do
+    Comment.create(post: post, author: user, text: 'test comment 2')
   end
 
   before(:each) do
@@ -28,7 +32,7 @@ RSpec.describe 'Post #Show Page', type: :feature do
   end
 
   it 'I can see how many comments it has.' do
-    expect(page).to have_content('Comments: 0')
+    expect(page).to have_content('Comments: 2')
   end
 
   it 'I can see how many likes it has.' do
@@ -40,6 +44,12 @@ RSpec.describe 'Post #Show Page', type: :feature do
   end
 
   it 'I can see the username of each commenter.' do
-    expect(page).to have_content(comment.author.name)
+    expect(page).to have_content(comment1.author.name)
+    expect(page).to have_content(comment2.author.name)
+  end
+
+  it 'I can see the comment each commenter left.' do
+    expect(page).to have_content(comment1.text)
+    expect(page).to have_content(comment2.text)
   end
 end
