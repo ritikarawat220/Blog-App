@@ -13,6 +13,8 @@
   <header>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <a href="<%= destroy_user_session_path %>">Sign out</a>
+    <%= link_to "Sign out 2", destroy_user_session_path, method: :delete %>
   </header>
 
   <body>
