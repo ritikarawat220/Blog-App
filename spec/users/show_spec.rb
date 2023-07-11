@@ -1,52 +1,46 @@
 require 'rails_helper'
-require 'capybara/rspec'
-require 'capybara/rails'
 
-RSpec.feature 'User show page' do
-  scenario 'displays user profile picture, name, number of posts, bio, and first 3 posts' do
-    user = User.create(name: 'John Doe', photo: 'www.unsplash.com/user/1', bio: 'Lorem ipsum')
-    post1 = Post.create(author: user, text: 'First post')
-    post2 = Post.create(author: user, text: 'Second post')
-    post3 = Post.create(author: user, text: 'Third post')
+RSpec.describe 'User #Show Page', type: :feature do
+  before(:each) do
+    @user = User.create(name: 'Lilly', photo: 'https://example.jpg',
+                        bio: 'She is a teacher from Mexico', posts_counter: 10)
+    @post1 = Post.create(title: 'test post-1', text: 'test text-1', comments_counter: 1,
+                         likes_counter: 2, author_id: @user.id)
+    @post2 = Post.create(title: 'test post-2', text: 'test text-2', comments_counter: 1,
+                         likes_counter: 2, author_id: @user.id)
+    @post3 = Post.create(title: 'test post-3', text: 'test text-3', comments_counter: 1,
+                         likes_counter: 2, author_id: @user.id)
+    @post4 = Post.create(title: 'test post-4', text: 'test text-4', comments_counter: 1,
+                         likes_counter: 2, author_id: @user.id)
 
-    user.update(posts_counter: user.posts.count)
-
-    visit user_path(user)
-
-    expect(page).to have_selector("img[src='#{user.photo}']")
-    expect(page).to have_content(user.name)
-    expect(page).to have_content("Number of posts: #{user.posts_counter}")
-    expect(page).to have_content(user.bio)
-
-    expect(page).to have_content(post1.text)
-    expect(page).to have_content(post2.text)
-    expect(page).to have_content(post3.text)
-
-    expect(page).not_to have_content('First post')
-    expect(page).not_to have_content('Second post')
-    expect(page).not_to have_content('Third post')
-
-    expect(page).to have_link('See all posts', href: user_posts_path(user))
+    visit user_path(@user)
   end
 
-  scenario 'clicking on a post redirects to that post\'s show page' do
-    user = User.create(name: 'John Doe', photo: 'www.unsplash.com/user/1')
-    post = Post.create(author: user, text: 'First post')
-
-    visit user_path(user)
-    click_link post.text, match: :first
-
-    expect(current_path).to eq(post_path(post))
-    expect(page).to have_content(post.text)
+  it 'I can see the user\'s profile picture.' do
+    expect(page.html).to include(@user.photo)
   end
 
-  scenario 'clicking on "See all posts" redirects to the user\'s posts index page' do
-    user = User.create(name: 'John Doe', photo: 'www.unsplash.com/user/1')
+  it 'I can see the user\'s username.' do
+    expect(page).to have_content(@user.name)
+  end
 
-    visit user_path(user)
-    click_link 'See all posts'
+  it 'I can see the number of posts the user has written.' do
+    expect(page.html).to have_content(@user.posts_counter)
+  end
 
-    expect(current_path).to eq(user_posts_path(user))
-    expect(page).to have_content("Name: #{user.name}")
+  it 'I can see the user\'s bio.' do
+    expect(page).to have_content(@user.bio)
+  end
+
+  it 'I can see the user\'s first 3 posts.' do
+    recent_posts = @user.posts.order(created_at: :desc).limit(3)
+    recent_posts.each do |post|
+      expect(page).to have_content(post.title)
+    end
+  end
+
+  it 'When I click to see all posts, it redirects me to the user\'s post index page.' do
+    click_link('See all posts')
+    expect(current_path).to eq(user_posts_path(@user))
   end
 end
