@@ -1,6 +1,4 @@
 require 'rails_helper'
-require 'capybara/rspec'
-require 'capybara/rails'
 
 RSpec.describe 'Post #Index Page', type: :feature do
   before(:each) do
