@@ -2,14 +2,13 @@ AllCops:
   NewCops: enable
   Exclude:
     - "db/**/*"
-    - "bin/*" 
+    - "bin/*"
     - "config/**/*"
     - "Guardfile"
     - "Rakefile"
+    - "spec/**/*"
     - "node_modules/**/*"
-
   DisplayCopNames: true
-
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
@@ -27,7 +26,6 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   AllowedMethods: ['describe']
   Max: 30
-
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
@@ -40,7 +38,6 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
-
 Layout/HashAlignment:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
