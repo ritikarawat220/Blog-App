@@ -111,6 +111,10 @@ cd 'project name'
 - Twitter: [@ritikarawat22](https://twitter.com/Ritikarawat22)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/rawatritika/)
 
+👤 **Jean Jacques Buhendwa**
+
+- GitHub: [@jeanbuhendwa](https://github.com/jeanbuhendwa)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
