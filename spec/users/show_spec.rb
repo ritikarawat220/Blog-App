@@ -8,7 +8,7 @@ RSpec.feature 'User show page' do
     post1 = Post.create(author: user, text: 'First post')
     post2 = Post.create(author: user, text: 'Second post')
     post3 = Post.create(author: user, text: 'Third post')
-    
+
     user.update(posts_counter: user.posts.count)
 
     visit user_path(user)
