@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
       u.permit(:email, :name, :photo, :bio, :password, :current_password, :password_confirmation)
     end
   end
+
+  def after_sending_reset_password_instructions_path_for(resource_name)
+    new_session_path(resource_name) if is_navigational_format?
+  end
 end
