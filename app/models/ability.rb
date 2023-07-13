@@ -12,7 +12,7 @@ class Ability
       can :destroy, Post, author_id: user.id
       can :destroy, Comment, author_id: user.id
     end
-    
+
     puts "User #{user.id} permissions:"
     puts "can destroy Post: #{can? :destroy, Post}"
   end
