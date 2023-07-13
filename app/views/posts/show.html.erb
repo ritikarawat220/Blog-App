@@ -5,28 +5,36 @@
       <h6>Comments: <%= @post.comments.count %>,&nbsp;Likes: <%= @post.likes.count %></h6>
     </div>
     <div class='buttons'>
-        <button class='create-comment-btn'>
-          <%= link_to 'Add New Comment', new_user_post_comment_path(@user, @post)%>
-        </button>
+      <button class='create-comment-btn'>
+        <%= link_to 'Add New Comment', new_user_post_comment_path(@user, @post)%>
+      </button>
 
-        <div>
-          <%= form_with model: Like, url: user_post_likes_path(@post.author, @post) do |form| %>
-            <%= form.submit 'Like Post', class: 'like-btn' %>
-          <% end %>
-        </div>
+      <div>
+        <%= form_with model: Like, url: user_post_likes_path(@post.author, @post) do |form| %>
+          <%= form.submit 'Like Post', class: 'like-btn' %>
+        <% end %>
+      </div>
     </div>
     <h3><%= @post.title %></h3>
-    <p><%= @post.text %></p>
+    <p><%= @post.body %></p>
   </div>
 
   <% if @comments.count > 0 %>
     <div class="comments">
       <ul> 
         <% @comments.each do |comment|%>
-            <li><%= comment.author.name %>: <%= comment.text %></li>
+          <li>
+            <%= comment.author.name %>: <%= comment.text %>
+            <% if can? :destroy, comment %>
+              <%= button_to 'DELETE Comment', user_post_comment_path(@user, @post, comment), method: :delete %>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>
+  <% end %>
 
+  <% if can? :destroy,  @post %>
+    <%= button_to 'DELETE Post', user_post_path(@user, @post), method: :delete %>
   <% end %>
 </div>

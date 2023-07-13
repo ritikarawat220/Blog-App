@@ -1,9 +1,10 @@
-<div class="wrapper">
-  <section class="login-container">
+ <section class="login-container">
 
   <h2 class="form_title">Sign up</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
@@ -35,13 +36,20 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
+     <div class="field">
+      <%= f.label :role %><br />
+      <%= f.select :role, ['user', 'admin'] %>
+    </div>
+
     <div class="actions">
       <%= f.submit "Sign up" %>
     </div>
-
     <div class="links">
       <%= render "devise/shared/links" %>
     </div>
   <% end %>
+
+  
+
   </section>
-</div>
+  

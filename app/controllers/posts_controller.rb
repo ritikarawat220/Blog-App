@@ -1,13 +1,18 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource :user
+  load_and_authorize_resource :post, through: :user, shallow: true
+
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts.includes(:comments)
+    @posts = @user.posts
+    # @posts = Post.includes(:author)
   end
 
   def show
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
-    @comments = @post.comments
+    # @comments = @post.comments
+    @comments = Comment.includes(:post)
   end
 
   def create
@@ -15,7 +20,6 @@ class PostsController < ApplicationController
 
     if @post.save
       redirect_to user_posts_path(current_user)
-
     else
       flash[:alert] = 'Something went wrong'
       render 'new'
@@ -24,6 +28,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to user_posts_path(@user)
   end
 
   private
