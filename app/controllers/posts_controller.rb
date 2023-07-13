@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource :user
+  load_and_authorize_resource :post, through: :user, shallow: true
+
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:comments)
@@ -24,6 +27,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to user_posts_path(@user)
   end
 
   private
