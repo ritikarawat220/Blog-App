@@ -5,8 +5,10 @@
   <div class='post-input'>
     <%= form.label :title %>
     <%= form.text_field :title, placeholder: 'Enter title', class: 'post-title' %>
+
     <%= form.label :text %>
     <%= form.text_area :text, placeholder: 'Enter your post', class: 'post-area' %>
+
     <%= form.submit 'Create Post', class: 'post-btn' %>
   </div>
 <% end %>
