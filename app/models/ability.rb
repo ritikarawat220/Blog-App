@@ -2,7 +2,6 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= current_user # guest user (not logged in)
     if user.role == 'admin'
       can :manage, :all
     else
@@ -13,6 +12,8 @@ class Ability
       can :destroy, Comment, author_id: user.id
     end
 
+    #   puts "User #{user.id} permissions:"
+    #   puts "can destroy [@user, @post]: #{can? :destroy, [@user, @post]}"
     puts "User #{user.id} permissions:"
     puts "can destroy Post: #{can? :destroy, Post}"
   end
