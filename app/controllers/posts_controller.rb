@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  skip_before_action :verify_authenticity_token, if: -> { request.format.json? }
+  
   load_and_authorize_resource :user
   load_and_authorize_resource :post, through: :user, shallow: true
 
