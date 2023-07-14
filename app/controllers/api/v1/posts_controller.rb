@@ -1,5 +1,5 @@
 class Api::V1::PostsController < ApplicationController
-    before_action :set_user, only: [:index]
+  before_action :set_user, only: [:index]
   before_action :set_post, only: %i[comments create_comment]
 
   def index

@@ -1,6 +1,6 @@
 class Api::V1::CommentsController < ApplicationController
-    skip_before_action :verify_authenticity_token, only: [:create]
-    before_action :set_post, only: %i[index create update destroy]
+  skip_before_action :verify_authenticity_token, only: [:create]
+  before_action :set_post, only: %i[index create update destroy]
 
   def index
     @comments = @post.comments
